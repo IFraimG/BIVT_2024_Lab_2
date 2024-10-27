@@ -15,8 +15,8 @@ public class Program
         // program.Task_1_2(0.9, 1.23);
         // program.Task_1_3(0.9, 1.23);
         // program.Task_1_4(0.9, 1.23, -0.1);
-        program.Task_1_5(0.9, 1.23);
-        program.Task_1_6(0.9, 1.23);
+        //program.Task_1_5(0.9, 1.23);
+        //program.Task_1_6(0.9, 1.23);
         // program.Task_1_7(0.9);
         // program.Task_1_8(0.9);
         // program.Task_1_9(0.9);
@@ -27,26 +27,32 @@ public class Program
         // program.Task_2_2(5, 1, 3, 1);
         // program.Task_2_3(10);
         // program.Task_2_4(3, 1, 3);
-        // program.Task_2_5(10, 30);
-        // program.Task_2_6(5);
+        //program.Task_2_5(10, 30);
+        //program.Task_2_6(5);
         // program.Task_2_7(5);
         // program.Task_2_8(4);
         //program.Task_2_9(10);
         // program.Task_2_10(10);
         // program.Task_2_11(10);
-        // program.Task_2_12(-0.75, 0);
+        //program.Task_2_12(-0.75, 0);
         // program.Task_2_13(-0.75, 1, 0);
         //program.Task_3_1();
         //program.Task_3_2(3, 2, 1);
         //program.Task_3_2(1.5, 1.5, 1);
         //program.Task_3_2(1, 3, 1);
-        program.Task_3_3();
+        
+        //program.Task_3_3();
+        
         //program.Task_3_4(1, 2);
         //program.Task_3_5(30);
-        program.Task_3_6();
+        
+        //program.Task_3_6();
+        
         //program.Task_3_7();
         //program.Task_3_8();
+        
         program.Task_3_9();
+        
         //program.Task_3_10();
         //program.Task_3_11();
         //program.Task_3_12(10, 0);
@@ -287,7 +293,7 @@ public class Program
             string result = Console.ReadLine();
             double foo = double.Parse(result, new CultureInfo("en-US"));
             
-            if (foo >= norm)
+            if (foo <= norm)
             {
                 answer++;
             }
@@ -309,7 +315,7 @@ public class Program
             double x = double.Parse(result, new CultureInfo("en-US"));
             double y = double.Parse(result2, new CultureInfo("en-US"));
 
-            if ((x >= 0) && (x <= Math.PI) && (Math.Sin(x) >= y))
+            if ((x >= 0 && y >= 0) && (x <= Math.PI) && (Math.Sin(x) >= y))
             {
                 answer++;
             }
@@ -458,9 +464,17 @@ public class Program
         if (r < 0) answer = 0;
         else
         {
-            if (type == 0) answer = Math.Round(r * r, 2);
-            else if (type == 1) answer = Math.Round(Math.PI * r * r, 2);
-            else if (type == 2) answer = Math.Round(r * r * Math.Sqrt(3) / 4, 2);
+            switch (type)
+            {
+                case 0: answer = Math.Round(r * r, 2);
+                    break;
+                case 1: answer = Math.Round(Math.PI * r * r, 2);
+                    break;
+                case 2: answer = Math.Round(r * r * Math.Sqrt(3) / 4, 2);
+                    break;
+                default:
+                    break;
+            }
         }
         Console.WriteLine(answer);
         // end
@@ -474,20 +488,27 @@ public class Program
         // code here;
         if (A >= 0 && B >= 0)
         {
-            if (type == 0) answer = Math.Round(A * B, 2);
-            else if (type == 1) answer = Math.Round(Math.PI * Math.Abs((Math.Pow(A, 2) - Math.Pow(B, 2))), 2);
-            else if (type == 2)
+            switch (type)
             {
-                if (A >= B)
-                {
-                    double height = Math.Sqrt(A * A - (B * B) / 4); 
-                    answer = Math.Round(0.5 * B * height);   
-                }
-                else
-                {
-                    double height = Math.Sqrt(B * B - (A * A) / 4); 
-                    answer = Math.Round(0.5 * A * height, 2);     
-                }
+               case 0: answer = Math.Round(A * B, 2);
+                   break;
+               case 1: answer = Math.Round(Math.PI * Math.Abs((Math.Pow(A, 2) - Math.Pow(B, 2))), 2);
+                   break;
+               case 2: 
+                   if (A >= B)
+                   {
+                       double height = Math.Sqrt(A * A - (B * B) / 4); 
+                       answer = Math.Round(0.5 * B * height);   
+                   }
+                   else
+                   {
+                       double height = Math.Sqrt(B * B - (A * A) / 4); 
+                       answer = Math.Round(0.5 * A * height, 2);     
+                   }
+
+                   break;
+               default:
+                   break;
             }
         }
 
@@ -581,7 +602,7 @@ public class Program
             double x = double.Parse(result, new CultureInfo("en-US"));
             double y = double.Parse(result2, new CultureInfo("en-US"));
 
-            if ((x >= 0) && (x <= Math.PI) && (Math.Sin(x) >= y))
+            if ((x >= 0 && y >= 0) && (x <= Math.PI) && (Math.Sin(x) >= y))
             {
                 answer++;
             }
